@@ -1,9 +1,16 @@
 import {createBrowserRouter} from "react-router-dom";
 import {LoginPage} from "../pages/login/login";
-import {CREATE_EVENT_PAGE_PATH, HOME_PAGE_PATH, LOGIN_PAGE_PATH, REGISTRATION_PAGE_PATH} from "../const/path-page";
+import {
+    CREATE_EVENT_PAGE_PATH,
+    HOME_PAGE_PATH,
+    LOGIN_PAGE_PATH,
+    PROFILE_PAGE_PATH,
+    REGISTRATION_PAGE_PATH
+} from "../const/path-page";
 import {RegistrationPage} from "../pages/registration/registration";
 import {HomePage} from "../pages/home/home";
 import {CreateEventPage} from "../pages/create-event/create-event";
+import {ProfilePage} from "../pages/profile/profile";
 
 export const router = createBrowserRouter([
     {
@@ -21,5 +28,9 @@ export const router = createBrowserRouter([
     {
         path: CREATE_EVENT_PAGE_PATH,
         element: <CreateEventPage/>,
+    },
+    {
+        path: PROFILE_PAGE_PATH,
+        element: <ProfilePage/>,
     },
 ]);

@@ -2,7 +2,7 @@ import {Checkbox, FormControlLabel, Stack, TextField, Typography} from "@mui/mat
 import {useState} from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 import {HOME_PAGE_PATH, REGISTRATION_PAGE_PATH} from "../../const/path-page";
-import {UIButton} from "../../components/button";
+import {UIButton} from "../../components/ui/button";
 
 
 export const LoginPage = () => {

@@ -1,6 +1,6 @@
 import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Stack, TextField, Typography} from "@mui/material";
-import {UIButton} from "../../components/button";
-import {REGISTRATION_PAGE_PATH} from "../../const/path-page";
+import {UIButton} from "../../components/ui/button";
+import {PROFILE_PAGE_PATH, REGISTRATION_PAGE_PATH} from "../../const/path-page";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 
@@ -14,6 +14,8 @@ export const RegistrationPage = () => {
         password: '',
         confirmPassword: '',
         userRole: '',
+        status: 'legalEntity',
+        organization: '',
     });
 
     const onChangeField = (event) => {
@@ -23,17 +25,22 @@ export const RegistrationPage = () => {
         }));
     }
 
+    const onChangeStatus = (event) => {
+        setRegistrationData(prevData => ({...prevData, status: event.target.value}));
+    }
+
     const registration = () => {
-        navigate(REGISTRATION_PAGE_PATH);
+        navigate(PROFILE_PAGE_PATH);
     }
 
     return (
         <Stack direction='row' justifyContent='center' alignItems='center' height='100vh'>
             <Stack width='400px' component='form' gap={2}>
-                <Typography variant="h1" fontSize='32px' align='center'>Регистрация</Typography>
+                <Typography variant="h1" fontSize='32px' align='center'>Регистрация организатора</Typography>
                 <TextField
                     name="name"
-                    label="Введите имя"
+                    size='small'
+                    placeholder="Введите имя"
                     required
                     value={registrationData.name}
                     onChange={onChangeField}
@@ -41,7 +48,8 @@ export const RegistrationPage = () => {
                 />
                 <TextField
                     name="surname"
-                    label="Введите фамилию"
+                    size='small'
+                    placeholder="Введите фамилию"
                     required
                     value={registrationData.surname}
                     onChange={onChangeField}
@@ -49,7 +57,8 @@ export const RegistrationPage = () => {
                 />
                 <TextField
                     name="patronymic"
-                    label="Введите отчество"
+                    placeholder="Введите отчество"
+                    size='small'
                     required
                     value={registrationData.patronymic}
                     onChange={onChangeField}
@@ -57,7 +66,8 @@ export const RegistrationPage = () => {
                 />
                 <TextField
                     name="email"
-                    label="Укажите электронную почту"
+                    placeholder="Укажите электронную почту"
+                    size='small'
                     required
                     value={registrationData.email}
                     onChange={onChangeField}
@@ -65,29 +75,47 @@ export const RegistrationPage = () => {
                 />
                 <TextField
                     type="password"
-                    label="Введите пароль"
+                    placeholder="Введите пароль"
                     name="password"
+                    size='small'
                     required
                     value={registrationData.password}
                     onChange={onChangeField}
                     fullWidth
                 />
                 <TextField
-                    type="confirmPassword"
-                    label="Повторите пароль"
-                    name="password"
+                    type="passowrd"
+                    placeholder="Повторите пароль"
+                    name="confirmPassword"
+                    size='small'
                     required
                     value={registrationData.confirmPassword}
                     onChange={onChangeField}
                     fullWidth
                 />
                 <FormControl>
-                    <FormLabel>Кто вы?</FormLabel>
-                    <RadioGroup defaultValue="user">
-                        <FormControlLabel value="organizer" control={<Radio />} label="Организатор" />
-                        <FormControlLabel value="user" control={<Radio />} label="Посетитель" />
+                    <FormLabel>Ваш статус?</FormLabel>
+                    <RadioGroup
+                        defaultValue="legalEntity"
+                        value={registrationData.status}
+                        onChange={onChangeStatus}
+                    >
+                        <FormControlLabel value="person" control={<Radio />} label="Физическое лицо" />
+                        <FormControlLabel value="legalEntity" control={<Radio />} label="Юридическое лицо" />
                     </RadioGroup>
                 </FormControl>
+                {
+                    registrationData.status === 'legalEntity' &&
+                    <TextField
+                        name="organization"
+                        placeholder="Название организации"
+                        size='small'
+                        required
+                        value={registrationData.organization}
+                        onChange={onChangeField}
+                        fullWidth
+                    />
+                }
                 <UIButton
                     variant="primary"
                     onClick={registration}

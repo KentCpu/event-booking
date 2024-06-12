@@ -1,11 +1,14 @@
 import {Box, Container, Stack, styled, TextField, Typography} from "@mui/material";
-import {Header} from "../../components/header";
-import {UIButton} from "../../components/button";
+import {Header} from "../../components/screen/header";
+import {UIButton} from "../../components/ui/button";
 import Wallpaper from '../../assets/ocean-wave-water-wallpaper.png';
-import {Event} from "../../components/event";
+import {Event} from "../../components/screen/event";
 import CardWallpaper1 from '../../assets/card-wallpaper-1.png';
 import CategoryWallpaper1 from '../../assets/category-logo-1.png';
-import {Category} from "../../components/category";
+import {Category} from "../../components/screen/category";
+import {useNavigate} from "react-router-dom";
+import {CREATE_EVENT_PAGE_PATH, HOME_PAGE_PATH} from "../../const/path-page";
+import {useSession} from "../../providers/session-context";
 
 export const SearchField = styled(TextField)(() => ({
     backgroundColor: '#fff',
@@ -50,18 +53,20 @@ export const SearchField = styled(TextField)(() => ({
 }));
 
 export const HomePage = () => {
+    const navigate = useNavigate();
+
     return (
         <Stack>
             <Header/>
                 <Stack height='450px' sx={{ background: `url(${Wallpaper}) no-repeat` }} >
                     <Container maxWidth="xl">
                         <Stack direction='row' mb='120px'>
-                            <UIButton sx={{width: '324px', marginTop: '32px', marginLeft: 'auto'}}>Разместить мероприятие</UIButton>
+                            <UIButton sx={{width: '324px', marginTop: '32px', marginLeft: 'auto'}} onClick={() => navigate(CREATE_EVENT_PAGE_PATH)}>Разместить мероприятие</UIButton>
                         </Stack>
                         <Stack direction='row' gap={1}>
                             <Box width='900px'>
                                 <SearchField
-                                    label="Мероприятие, досуг, развлечение"
+                                    placeholder="Мероприятие, досуг, развлечение"
                                     variant="outlined"
                                     fullWidth
                                 />
