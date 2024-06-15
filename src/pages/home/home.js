@@ -9,6 +9,7 @@ import {Category} from "../../components/screen/category";
 import {useNavigate} from "react-router-dom";
 import {CREATE_EVENT_PAGE_PATH, HOME_PAGE_PATH} from "../../const/path-page";
 import {useSession} from "../../providers/session-context";
+import {useState} from "react";
 
 export const SearchField = styled(TextField)(() => ({
     backgroundColor: '#fff',
@@ -55,6 +56,12 @@ export const SearchField = styled(TextField)(() => ({
 export const HomePage = () => {
     const navigate = useNavigate();
 
+    const [event, setEvent] = useState('');
+
+    const searchEvent = () => {
+        navigate(`/events/${event}`);
+    }
+
     return (
         <Stack>
             <Header/>
@@ -66,12 +73,14 @@ export const HomePage = () => {
                         <Stack direction='row' gap={1}>
                             <Box width='900px'>
                                 <SearchField
+                                    value={event}
+                                    onChange={event => setEvent(event.target.value)}
                                     placeholder="Мероприятие, досуг, развлечение"
                                     variant="outlined"
                                     fullWidth
                                 />
                             </Box>
-                            <UIButton variant='secondary'>Найти мероприятие</UIButton>
+                            <UIButton variant='secondary' onClick={searchEvent}>Найти мероприятие</UIButton>
                         </Stack>
                     </Container>
                 </Stack>

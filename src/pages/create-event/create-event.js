@@ -6,7 +6,7 @@ import {UIButton} from "../../components/ui/button";
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
-const categories = [
+export const categories = [
     {
         id: 1,
         name: 'Музыка',

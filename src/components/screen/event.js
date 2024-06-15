@@ -1,13 +1,13 @@
 import {Box, Stack, Typography} from "@mui/material";
 
-const EventCategory = ({name}) => {
+export const EventCategory = ({name}) => {
     return (
         <Box
         color='#fff'
-        padding='2px 5px'
+        padding='5px 10px'
         backgroundColor='#999999'
         borderRadius='10px'
-        fontSize='13px'
+        fontSize='14px'
         >
             {name}
         </Box>
@@ -16,9 +16,9 @@ const EventCategory = ({name}) => {
 
 export const Event = ({cover, name, categories, startDate, endDate, daysBeforeStart}) => {
     return (
-        <Box backgroundColor='#D9D9D9' borderRadius='16px'>
+        <Box backgroundColor='#D9D9D9' borderRadius='15px'>
             <Box>
-                <img src={cover} alt='Обложка'/>
+                <img src={cover} alt='Обложка' style={{borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px'}}/>
             </Box>
             <Stack padding='10px 5px 10px 5px'>
                 <Stack direction='row' gap={1} flexWrap='wrap' mb={1}>
