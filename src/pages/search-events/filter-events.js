@@ -7,13 +7,26 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import {categories} from "../create-event/create-event";
 import {DatePicker} from "@mui/x-date-pickers";
 import {UIButton} from "../../components/ui/button";
+import {useSession} from "../../providers/session-context";
+import {ADMIN_ROLE} from "../../const/role";
 
 
 export const FilterEvents = () => {
+    const {session} = useSession();
+
     return (
         <Stack maxWidth='400px'>
-            <Typography variant='h4' mb={2}>Фильтры</Typography>
+            <Typography variant='h4' mb={1}>Фильтры</Typography>
             <Stack mb={2}>
+                {session.role === ADMIN_ROLE &&
+                    <FormGroup>
+                        <FormControlLabel control={<Checkbox />} label="Забаненные" />
+                        <FormControlLabel control={<Checkbox />} label="Отмененные" />
+                        <FormControlLabel control={<Checkbox />} label="Ожидают рассмотрения" />
+                        <FormControlLabel control={<Checkbox />} label="Проведенные" />
+                        <FormControlLabel control={<Checkbox />} label="Соглашенные" />
+                    </FormGroup>
+                }
                 <Typography variant='h5'>Цена</Typography>
                 <FormGroup>
                     <FormControlLabel control={<Checkbox defaultChecked />} label="Бесплатно" />

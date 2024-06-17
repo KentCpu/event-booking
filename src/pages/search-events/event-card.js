@@ -2,9 +2,11 @@ import {Stack, Typography} from "@mui/material";
 import {EventCategory} from "../../components/screen/event";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 
-export const EventCard = ({cover, title, subtitle, categories, views, place, time, price}) => {
+export const EventCard = ({cover, title, subtitle, categories, views, place, time, price, onClick}) => {
     return (
-        <Stack direction='row' border='1px solid #000' borderRadius='8px' width='100%'>
+        <Stack direction='row' border='1px solid #000' borderRadius='8px' width='100%' onClick={onClick} sx={{
+            cursor: 'pointer'
+        }}>
             <img src={cover} alt='Обложка' style={{width: '350px', height: '240px'}} />
             <Stack>
                 <Typography fontSize='26px' mb={1} sx={{borderBottom: '1px solid #000', padding: '4px 16px'}}>{title}</Typography>

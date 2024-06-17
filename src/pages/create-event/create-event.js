@@ -25,7 +25,7 @@ export const CreateEventPage = () => {
     return (
         <>
             <Header />
-                <Container maxWidth="xl">
+                <Container maxWidth="xl" sx={{marginBottom: '20px'}}>
                     <Typography mt={2} mb={1} variant='h4'>Здесь вы можете создать мероприятие, делайте все по шагам и все получится!</Typography>
                     <Stack width='900px' gap={1}>
                         <Typography>1. Укажите название будущего мероприятия:</Typography>
@@ -66,10 +66,7 @@ export const CreateEventPage = () => {
                             fullWidth
                         />
                         <Typography>4. Опишите мероприятие:</Typography>
-                        <TextareaAutosize
-                            placeholder="Опишите мероприятие"
-                            style={{ width: "100%", height: 120 }}
-                        />
+                        <TextField rows={4} multiline placeholder='Опишите мероприятие' fullWidth />
                         <Typography>5. Укажите количество участников:</Typography>
                         <TextField size='small' label="Количество участников" />
                         <Typography>6. Укажите стоимость посещения мероприятия:</Typography>
@@ -98,11 +95,8 @@ export const CreateEventPage = () => {
                             )}
                         />
                         <Typography>9. Укажите служебную информацию</Typography>
-                        <TextareaAutosize
-                            placeholder="Служебная информацию"
-                            style={{ width: "100%", height: 120 }}
-                        />
-                        <UIButton variant='secondary'>Отправить</UIButton>
+                        <TextField rows={4} multiline placeholder='Служебная информация' fullWidth   />
+                        <UIButton variant='secondary' sx={{width: 590, margin: 'auto'}}>Отправить</UIButton>
                     </Stack>
                 </Container>
         </>

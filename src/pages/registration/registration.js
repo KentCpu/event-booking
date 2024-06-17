@@ -93,6 +93,12 @@ export const RegistrationPage = () => {
                     onChange={onChangeField}
                     fullWidth
                 />
+                <TextField
+                    placeholder="Введите номер телефона"
+                    size='small'
+                    required
+                    fullWidth
+                />
                 <FormControl>
                     <FormLabel>Ваш статус?</FormLabel>
                     <RadioGroup

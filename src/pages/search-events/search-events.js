@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
-import {useSession} from "../../providers/session-context";
-import {useNavigate, useParams} from "react-router-dom";
-import {Box, Button, Container, Stack, Typography} from "@mui/material";
 import {Header} from "../../components/screen/header";
-import {ADMIN_ROLE} from "../../const/role";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import {SearchField} from "../home/home";
+import {Box, Button, Container, Stack, Typography} from "@mui/material";
 import {UIButton} from "../../components/ui/button";
-import {FilterEvents} from "../search-events/filter-events";
-import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
-import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
-import {EventCard} from "../search-events/event-card";
-import CardWallpaper1 from "../../assets/kak-igra-v-shahmaty.png";
+import {SearchField} from "../home/home";
+import {FilterEvents} from "./filter-events";
+import {EventCard} from "./event-card";
+import CardWallpaper1 from '../../assets/kak-igra-v-shahmaty.png';
+import {useState} from "react";
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
+import {useNavigate, useParams} from 'react-router-dom';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import {useSession} from "../../providers/session-context";
+import {ADMIN_ROLE} from "../../const/role";
 
 function a11yProps(index) {
     return {
@@ -21,7 +21,7 @@ function a11yProps(index) {
     };
 }
 
-export const Events = () => {
+export const SearchEvents = () => {
     const {session} = useSession();
     const [isSort, setIsSort] = useState(false);
     let { title } = useParams();
@@ -35,9 +35,7 @@ export const Events = () => {
 
     const toggleIsSort = () => setIsSort(prev => !prev);
 
-    const openEvent = () => {
-        navigate('/event/5')
-    }
+    const openEvent = () => navigate('/event/5');
 
     return (
         <Stack mb={1}>
@@ -74,7 +72,6 @@ export const Events = () => {
                                     <KeyboardArrowUpOutlinedIcon/> :
                                     <KeyboardArrowDownOutlinedIcon />
                             } sx={{textTransform: 'none', color: '#A5A5A5'}} onClick={toggleIsSort}>по дате проведения</Button>
-
                         </Stack>
                         <Stack gap={2}>
                             <EventCard

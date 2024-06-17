@@ -14,9 +14,9 @@ export const EventCategory = ({name}) => {
     )
 }
 
-export const Event = ({cover, name, categories, startDate, endDate, daysBeforeStart}) => {
+export const Event = ({cover, name, categories, startDate, endDate, daysBeforeStart, onClick}) => {
     return (
-        <Box backgroundColor='#D9D9D9' borderRadius='15px'>
+        <Box backgroundColor='#D9D9D9' borderRadius='15px' sx={{cursor: 'pointer'}} onClick={onClick}>
             <Box>
                 <img src={cover} alt='Обложка' style={{borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px'}}/>
             </Box>

@@ -10,6 +10,9 @@ import {useNavigate} from "react-router-dom";
 import {CREATE_EVENT_PAGE_PATH, HOME_PAGE_PATH} from "../../const/path-page";
 import {useSession} from "../../providers/session-context";
 import {useState} from "react";
+import {ORGANIZER_ROLE} from "../../const/role";
+import { ReactComponent as OptionIcon } from '../../assets/option.svg';
+
 
 export const SearchField = styled(TextField)(() => ({
     backgroundColor: '#fff',
@@ -55,22 +58,30 @@ export const SearchField = styled(TextField)(() => ({
 
 export const HomePage = () => {
     const navigate = useNavigate();
-
     const [event, setEvent] = useState('');
+    const {session} = useSession();
 
     const searchEvent = () => {
-        navigate(`/events/${event}`);
+        navigate(`/search-events/${event}`);
     }
+
+    const openEvent = () => {
+        navigate('/event/5');
+    }
+
+    const openEvents = () => navigate('/search-events');
 
     return (
         <Stack>
             <Header/>
                 <Stack height='450px' sx={{ background: `url(${Wallpaper}) no-repeat` }} >
                     <Container maxWidth="xl">
-                        <Stack direction='row' mb='120px'>
-                            <UIButton sx={{width: '324px', marginTop: '32px', marginLeft: 'auto'}} onClick={() => navigate(CREATE_EVENT_PAGE_PATH)}>Разместить мероприятие</UIButton>
-                        </Stack>
-                        <Stack direction='row' gap={1}>
+                        {
+                            session.role === ORGANIZER_ROLE && <Stack direction='row' mb='120px'>
+                                <UIButton sx={{width: '324px', marginTop: '32px', marginLeft: 'auto'}} onClick={() => navigate(CREATE_EVENT_PAGE_PATH)}>Разместить мероприятие</UIButton>
+                            </Stack>
+                        }
+                        <Stack direction='row' gap={1} mt={session.role !== ORGANIZER_ROLE ? '150px' : undefined}>
                             <Box width='900px'>
                                 <SearchField
                                     value={event}
@@ -81,6 +92,9 @@ export const HomePage = () => {
                                 />
                             </Box>
                             <UIButton variant='secondary' onClick={searchEvent}>Найти мероприятие</UIButton>
+                            <UIButton variant='secondary' onClick={openEvents}>
+                                <OptionIcon />
+                            </UIButton>
                         </Stack>
                     </Container>
                 </Stack>
@@ -94,6 +108,7 @@ export const HomePage = () => {
                         endDate="01 июня 2024, 21:00"
                         daysBeforeStart='13д'
                         categories={['Соревнования', 'Шахматы']}
+                        onClick={openEvent}
                     />
                     <Event
                         cover={CardWallpaper1}
@@ -102,6 +117,7 @@ export const HomePage = () => {
                         endDate="01 июня 2024, 21:00"
                         daysBeforeStart='13д'
                         categories={['Соревнования', 'Шахматы']}
+                        onClick={openEvent}
                     />
                     <Event
                         cover={CardWallpaper1}
@@ -110,6 +126,7 @@ export const HomePage = () => {
                         endDate="01 июня 2024, 21:00"
                         daysBeforeStart='13д'
                         categories={['Соревнования', 'Шахматы']}
+                        onClick={openEvent}
                     />
                     <Event
                         cover={CardWallpaper1}
@@ -117,6 +134,7 @@ export const HomePage = () => {
                         startDate="01 июня 2024"
                         endDate="01 июня 2024, 21:00"
                         categories={['Соревнования', 'Шахматы']}
+                        onClick={openEvent}
                     />
                     <Event
                         cover={CardWallpaper1}
@@ -124,6 +142,7 @@ export const HomePage = () => {
                         startDate="01 июня 2024"
                         endDate="01 июня 2024, 21:00"
                         categories={['Соревнования', 'Шахматы']}
+                        onClick={openEvent}
                     />
                 </Stack>
                 <Typography mb={1} variant='h5' component='h2'>Вас может заинтересовать</Typography>
@@ -157,3 +176,4 @@ export const HomePage = () => {
         </Stack>
     );
 };
+
