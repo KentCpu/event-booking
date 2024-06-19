@@ -18,8 +18,8 @@ export const RejectionReason = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <Stack>
-            <UIButton sx={{width: 270}} onClick={() => setIsOpen(true)}>Отклонить</UIButton>
+        <Stack direction='row' justifyContent='center'>
+            <UIButton variant='secondary' sx={{width: 270}} onClick={() => setIsOpen(true)}>Отклонить</UIButton>
             <UIModal open={isOpen} onClose={() => setIsOpen(false)}>
                 <Typography variant='h5' mb={2}>Укажите причину отказа</Typography>
                 <TextField rows={8} multiline placeholder='Причина' fullWidth sx={{marginBottom: '20px'}} />
@@ -53,13 +53,28 @@ export const EventPage = () => {
                         <Typography variant='h5'>Дата проведения:</Typography>
                         <Typography mb={1}>10.04.2024 18:00-21:00 </Typography>
                         <Typography variant='h5' mb={1}>Стоимость: 100₽</Typography>
-                        <Stack direction='row' mb={3} alignItems='center' gap={1}>
-                            <Typography variant='h5'>Участники которые идут:</Typography>
-                            <img src={Visitors} />
-                            <Typography fontSize='18px'>15/60</Typography>
-                        </Stack>
+                        {session.role !== ADMIN_ROLE &&
+                            <Stack direction='row' mb={3} alignItems='center' gap={1}>
+                                <Typography variant='h5'>Участники которые идут:</Typography>
+                                <img src={Visitors} />
+                                <Typography fontSize='18px'>15/60</Typography>
+                            </Stack>
+                        }
+
                         {
-                            session.role === ADMIN_ROLE && <UIButton variant='secondary' sx={{width: 270}}>Утвердить</UIButton>
+
+                            session.role === ADMIN_ROLE && (
+                                <>
+                                    <Typography variant='h5' mb={1}>Организаторы:</Typography>
+                                    <Stack direction='row' alignItems='center' gap={1} mb={1}>
+                                        <AccountCircleOutlinedIcon fontSize='large' />
+                                        <Typography fontSize='20px'>Сибиряков Матвей Евгеньевич</Typography>
+                                    </Stack>
+                                    <Stack direction='row' justifyContent='flex-end'>
+                                        <UIButton sx={{width: 270}}>Утвердить</UIButton>
+                                    </Stack>
+                                </>
+                            )
                         }
                         {
                             session.role === USER_ROLE && <UIButton variant='secondary' sx={{width: 270}}>Посетить</UIButton>
@@ -79,7 +94,7 @@ export const EventPage = () => {
                         </Typography>
                         <Stack direction='row' gap={5} mt={2} mb={2}>
                             {
-                                session.role === ORGANIZER_ROLE && (
+                                (session.role === ORGANIZER_ROLE || session.role === USER_ROLE) && (
                                     <Stack direction='row' alignItems='end' gap={1} >
                                         <Stack direction='row' alignItems='center' gap={1}>
                                             <VisibilityOutlinedIcon fontSize='large' />
@@ -96,10 +111,11 @@ export const EventPage = () => {
                                             <Typography  mb={1}>Будет использоваться звукоусиливающая аппаратура.
                                                 Использование пиротехнических изделий не предусматривается. Программа состоит из вступления, показа мастер-класса и обучения.
                                             </Typography>
-                                        </>)
+                                        </>
+                                    )
                                 }
                                 {
-                                    session.role === ORGANIZER_ROLE && (
+                                    (session.role === ORGANIZER_ROLE || session.role === USER_ROLE) && (
                                         <>
                                             <Typography variant='h5' mb={1}>Организаторы:</Typography>
                                             <Stack direction='row' alignItems='center' gap={1}>

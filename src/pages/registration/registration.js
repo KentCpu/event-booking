@@ -35,70 +35,91 @@ export const RegistrationPage = () => {
 
     return (
         <Stack direction='row' justifyContent='center' alignItems='center' height='100vh'>
-            <Stack width='400px' component='form' gap={2}>
+            <Stack width='400px' component='form' gap={1.5}>
                 <Typography variant="h1" fontSize='32px' align='center'>Регистрация организатора</Typography>
-                <TextField
-                    name="name"
-                    size='small'
-                    placeholder="Введите имя"
-                    required
-                    value={registrationData.name}
-                    onChange={onChangeField}
-                    fullWidth
-                />
-                <TextField
-                    name="surname"
-                    size='small'
-                    placeholder="Введите фамилию"
-                    required
-                    value={registrationData.surname}
-                    onChange={onChangeField}
-                    fullWidth
-                />
-                <TextField
-                    name="patronymic"
-                    placeholder="Введите отчество"
-                    size='small'
-                    required
-                    value={registrationData.patronymic}
-                    onChange={onChangeField}
-                    fullWidth
-                />
-                <TextField
-                    name="email"
-                    placeholder="Укажите электронную почту"
-                    size='small'
-                    required
-                    value={registrationData.email}
-                    onChange={onChangeField}
-                    fullWidth
-                />
-                <TextField
-                    type="password"
-                    placeholder="Введите пароль"
-                    name="password"
-                    size='small'
-                    required
-                    value={registrationData.password}
-                    onChange={onChangeField}
-                    fullWidth
-                />
-                <TextField
-                    type="passowrd"
-                    placeholder="Повторите пароль"
-                    name="confirmPassword"
-                    size='small'
-                    required
-                    value={registrationData.confirmPassword}
-                    onChange={onChangeField}
-                    fullWidth
-                />
-                <TextField
-                    placeholder="Введите номер телефона"
-                    size='small'
-                    required
-                    fullWidth
-                />
+                <Stack>
+                    <Typography>Введите имя</Typography>
+                    <TextField
+                        name="name"
+                        size='small'
+                        placeholder="Введите имя"
+                        required
+                        value={registrationData.name}
+                        onChange={onChangeField}
+                        fullWidth
+                    />
+                </Stack>
+                <Stack>
+                    <Typography>Введите фамилию</Typography>
+                    <TextField
+                        name="surname"
+                        size='small'
+                        placeholder="Введите фамилию"
+                        required
+                        value={registrationData.surname}
+                        onChange={onChangeField}
+                        fullWidth
+                    />
+                </Stack>
+                <Stack>
+                    <Typography>Введите отчество</Typography>
+                    <TextField
+                        name="patronymic"
+                        placeholder="Введите отчество"
+                        size='small'
+                        required
+                        value={registrationData.patronymic}
+                        onChange={onChangeField}
+                        fullWidth
+                    />
+                </Stack>
+                <Stack>
+                    <Typography>Укажите электронную почту</Typography>
+                    <TextField
+                        name="email"
+                        placeholder="Укажите электронную почту"
+                        size='small'
+                        required
+                        value={registrationData.email}
+                        onChange={onChangeField}
+                        fullWidth
+                    />
+                </Stack>
+                <Stack>
+                    <Typography>Введите пароль</Typography>
+                    <TextField
+                        type="password"
+                        placeholder="Введите пароль"
+                        name="password"
+                        size='small'
+                        required
+                        value={registrationData.password}
+                        onChange={onChangeField}
+                        fullWidth
+                    />
+                </Stack>
+                <Stack>
+                    <Typography>Повторите пароль</Typography>
+                    <TextField
+                        type="passowrd"
+                        placeholder="Повторите пароль"
+                        name="confirmPassword"
+                        size='small'
+                        required
+                        value={registrationData.confirmPassword}
+                        onChange={onChangeField}
+                        fullWidth
+                    />
+                </Stack>
+                <Stack>
+                    <Typography>Повторите пароль</Typography>
+                    <TextField
+                        placeholder="Введите номер телефона"
+                        size='small'
+                        required
+                        fullWidth
+                    />
+                </Stack>
                 <FormControl>
                     <FormLabel>Ваш статус?</FormLabel>
                     <RadioGroup
@@ -112,15 +133,19 @@ export const RegistrationPage = () => {
                 </FormControl>
                 {
                     registrationData.status === 'legalEntity' &&
-                    <TextField
-                        name="organization"
-                        placeholder="Название организации"
-                        size='small'
-                        required
-                        value={registrationData.organization}
-                        onChange={onChangeField}
-                        fullWidth
-                    />
+                    <Stack>
+                        <Typography>Название организации</Typography>
+                        <TextField
+                            name="organization"
+                            placeholder="Название организации"
+                            size='small'
+                            required
+                            value={registrationData.organization}
+                            onChange={onChangeField}
+                            fullWidth
+                        />
+                    </Stack>
+
                 }
                 <UIButton
                     variant="primary"

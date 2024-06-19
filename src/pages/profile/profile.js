@@ -38,6 +38,7 @@ const categories = [
 
 export const ProfilePage = () => {
     const {session} = useSession();
+
     return (
         <Stack>
             <Header/>
@@ -81,32 +82,8 @@ export const ProfilePage = () => {
                                 <Typography>Дата рождения</Typography>
                                 <DatePicker
                                     placeholder="Дата рождения"
-                                    slotProps={{ textField: { size: 'small' } }}
+                                    slotProps={{ textField: { size: 'small', fullWidth: true } }}
                                 />
-                                {
-                                    session.role === USER_ROLE && <Autocomplete
-                                        multiple
-                                        fullWidth
-                                        size='small'
-                                        options={categories}
-                                        disableCloseOnSelect
-                                        getOptionLabel={(option) => option.name}
-                                        renderOption={(props, option, { selected }) => (
-                                            <li {...props}>
-                                                <Checkbox
-                                                    icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                                                    checkedIcon={<CheckBoxIcon fontSize="small" />}
-                                                    style={{ marginRight: 8 }}
-                                                    checked={selected}
-                                                />
-                                                {option.name}
-                                            </li>
-                                        )}
-                                        renderInput={(params) => (
-                                            <TextField placeholder="Интересы" {...params} />
-                                        )}
-                                    />
-                                }
                                 {
                                     session.role === ORGANIZER_ROLE &&  <TextField
                                         size='small'
@@ -130,11 +107,49 @@ export const ProfilePage = () => {
                             </FormControl>
                         </Stack>
                     </Stack>
-                    <Stack direction='row' justifyContent='space-between'>
+                    <Stack direction='row' gap='33px'>
                         <Typography>О себе</Typography>
-                        <TextareaAutosize style={{ width: '95%',  height: 190 }}/>
+                        <TextField
+                            placeholder="Текст вопроса"
+                            multiline
+                            rows={8}
+                            sx={{width: '94%'}}
+                        />
+                        {/*<TextareaAutosize style={{ width: '95%',  height: 190 }}/>*/}
                     </Stack>
-                    <Stack direction='row' gap={1} justifyContent='center' mt={2}>
+                    {
+                        session.role === USER_ROLE &&
+                    <Stack direction='row' alignItems='center' gap={1}>
+                        <Typography>Интересы</Typography>
+                        <Autocomplete
+                            multiple
+                            fullWidth
+                            size='small'
+                            options={categories}
+                            disableCloseOnSelect
+                            getOptionLabel={(option) => option.name}
+                            sx={{
+                                mt: 2,
+                                width: 500
+                            }}
+                            renderOption={(props, option, { selected }) => (
+                                <li {...props}>
+                                    <Checkbox
+                                        icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                                        checkedIcon={<CheckBoxIcon fontSize="small" />}
+                                        style={{ marginRight: 8 }}
+                                        checked={selected}
+                                    />
+                                    {option.name}
+                                </li>
+                            )}
+                            renderInput={(params) => (
+                                <TextField placeholder="Интересы" {...params} />
+                            )}
+                        />
+                    </Stack>
+                    }
+                    <Stack direction='row' gap={1} justifyContent='center' mt={2} mb={1}>
                         <UIButton sx={{width: '300px'}}>Сохранить изменения</UIButton>
                         <UIButton variant='secondary' sx={{width: '300px'}}>Сбросить</UIButton>
                     </Stack>

@@ -7,7 +7,7 @@ import CardWallpaper1 from '../../assets/card-wallpaper-1.png';
 import CategoryWallpaper1 from '../../assets/category-logo-1.png';
 import {Category} from "../../components/screen/category";
 import {useNavigate} from "react-router-dom";
-import {CREATE_EVENT_PAGE_PATH, HOME_PAGE_PATH} from "../../const/path-page";
+import {CREATE_EVENT_PAGE_PATH, STATISTICS_PAGE_PATH} from "../../const/path-page";
 import {useSession} from "../../providers/session-context";
 import {useState} from "react";
 import {ORGANIZER_ROLE} from "../../const/role";
@@ -74,7 +74,7 @@ export const HomePage = () => {
     return (
         <Stack>
             <Header/>
-                <Stack height='450px' sx={{ background: `url(${Wallpaper}) no-repeat` }} >
+                <Stack height='500px' sx={{ background: `url(${Wallpaper}) no-repeat` }} >
                     <Container maxWidth="xl">
                         {
                             session.role === ORGANIZER_ROLE && <Stack direction='row' mb='120px'>
@@ -92,10 +92,19 @@ export const HomePage = () => {
                                 />
                             </Box>
                             <UIButton variant='secondary' onClick={searchEvent}>Найти мероприятие</UIButton>
-                            <UIButton variant='secondary' onClick={openEvents}>
+                            <UIButton variant='secondary' onClick={openEvents} sx={{backgroundColor: '#BF7130'}}>
                                 <OptionIcon />
                             </UIButton>
                         </Stack>
+                        {
+                            session.role === ORGANIZER_ROLE &&
+                            <Stack direction='row' justifyContent='right'>
+                                <UIButton onClick={() => navigate(STATISTICS_PAGE_PATH)} sx={{width: '324px', mt: 5, ml: 'auto'}} >
+                                    Статистика
+                                </UIButton>
+                            </Stack>
+                        }
+
                     </Container>
                 </Stack>
             <Container maxWidth="xl" sx={{marginTop: 2}}>

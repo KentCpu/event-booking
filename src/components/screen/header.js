@@ -59,7 +59,6 @@ export const Header = () => {
                         session.role === ORGANIZER_ROLE && (
                             <Stack direction='row' alignItems='center' gap={5}>
                                 <NavLink to={'/search-events'} style={{color: '#000'}}>Мои мероприятия</NavLink>
-                                <NavLink to={STATISTICS_PAGE_PATH} style={{color: '#000'}}>Статистика</NavLink>
                                 <NavLink to={ISSUE_PAGE_PATH} style={{color: '#000'}}>Вопросы</NavLink>
                                 <Stack direction='row' alignItems='center'>
                                     <Typography>Сибиряков Матвей</Typography>
