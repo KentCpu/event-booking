@@ -5,14 +5,18 @@ import {SearchField} from "../home/home";
 import {FilterEvents} from "./filter-events";
 import {EventCard} from "./event-card";
 import CardWallpaper1 from '../../assets/kak-igra-v-shahmaty.png';
-import {useState} from "react";
+import React, {useState} from "react";
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 import {useNavigate, useParams} from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import {useSession} from "../../providers/session-context";
-import {ADMIN_ROLE} from "../../const/role";
+import {ADMIN_ROLE, GUEST_ROLE, ORGANIZER_ROLE, USER_ROLE} from "../../const/role";
+import CardWallpaper2 from "../../assets/event-card-2.png";
+import CardWallpaper3 from "../../assets/event-card-3.png";
+import CardWallpaper4 from "../../assets/event-card-4.png";
+import CardWallpaper5 from "../../assets/event-card-5.png";
 
 function a11yProps(index) {
     return {
@@ -74,37 +78,82 @@ export const SearchEvents = () => {
                             } sx={{textTransform: 'none', color: '#A5A5A5'}} onClick={toggleIsSort}>по дате проведения</Button>
                         </Stack>
                         <Stack gap={2}>
-                            <EventCard
-                                cover={CardWallpaper1}
-                                title={'Игровой вечер'}
-                                subtitle={'Покажите все свои навыки и сразитесь с сильнейшими. '}
-                                place='ул. Кирова 51а'
-                                time='06.06.24 19:10-21:30'
-                                price='150р'
-                                views='95'
-                                categories={['Шахматы', 'Спорт', 'Игра']}
-                                onClick={openEvent}
-                            />
-                            <EventCard
-                                cover={CardWallpaper1}
-                                title={'Игровой вечер'}
-                                subtitle={'Покажите все свои навыки и сразитесь с сильнейшими. '}
-                                place='ул. Кирова 51а'
-                                time='06.06.24 19:10-21:30'
-                                price='150р'
-                                views='95'
-                                categories={['Шахматы', 'Спорт', 'Игра']}
-                            />
-                            <EventCard
-                                cover={CardWallpaper1}
-                                title={'Игровой вечер'}
-                                subtitle={'Покажите все свои навыки и сразитесь с сильнейшими. '}
-                                place='ул. Кирова 51а'
-                                time='06.06.24 19:10-21:30'
-                                price='150р'
-                                views='95'
-                                categories={['Шахматы', 'Спорт', 'Игра']}
-                            />
+                            {
+                                session.role == ORGANIZER_ROLE || session.role == GUEST_ROLE || session.role == USER_ROLE
+                                &&
+                                <>
+                                    <EventCard
+                                        cover={CardWallpaper1}
+                                        title={'Игровой вечер'}
+                                        subtitle={'Покажите все свои навыки и сразитесь с сильнейшими. '}
+                                        place='Проспект Ленина 164'
+                                        time='06.06.24 19:10-21:30'
+                                        price='150р'
+                                        views='95'
+                                        categories={['Шахматы', 'Спорт', 'Игра']}
+                                        onClick={openEvent}
+                                    />
+                                    <EventCard
+                                        cover={CardWallpaper2}
+                                        title={'Экспозиция'}
+                                        subtitle={'Проведите прекрасный вечер в прекрасной атмосфере.'}
+                                        place='ул. Кирова 51а'
+                                        time='30.06.24 20:15-21:30'
+                                        price='400р'
+                                        views='230'
+                                        categories={['Выставка', 'Картины']}
+                                    />
+                                    <EventCard
+                                        cover={CardWallpaper3}
+                                        title={'Бесприданница'}
+                                        subtitle={'Вас ждет захватывающий вечер, полный загадок, тайн и неожиданных поворотов!'}
+                                        place='ул. Весенняя 11'
+                                        time='15.06.24 20:15-21:30'
+                                        price='300р'
+                                        views='120'
+                                        categories={['Спектакль', 'Театр', 'Выступление']}
+                                    />
+                                </>
+                            }
+
+                            {
+                                session.role === ADMIN_ROLE
+                                &&
+                                <>
+                                    <EventCard
+                                        cover={CardWallpaper4}
+                                        title={'Поп-танцы'}
+                                        subtitle={'Покажите все свои навыки и сразитесь с сильнейшими. '}
+                                        place='Проспект Ленина 124'
+                                        time='05.01.24 15:10-16:30'
+                                        price='250р'
+                                        views='73'
+                                        categories={['Танцы', 'Уроки', 'Искусство']}
+                                        onClick={openEvent}
+                                    />
+                                    <EventCard
+                                        cover={CardWallpaper5}
+                                        title={'Музыкальный вечер'}
+                                        subtitle={'Проведите прекрасный вечер в прекрасной атмосфере.'}
+                                        place='ул. Советский пр-кт 68'
+                                        time='10.04.24 18:00-21:000'
+                                        price='100р'
+                                        views='141'
+                                        categories={['Музыка', 'Культура', 'Ноты']}
+                                    />
+                                    <EventCard
+                                        cover={CardWallpaper3}
+                                        title={'Бесприданница'}
+                                        subtitle={'Вас ждет захватывающий вечер, полный загадок, тайн и неожиданных поворотов!'}
+                                        place='ул. Весенняя 11'
+                                        time='15.06.24 20:15-21:30'
+                                        price='300р'
+                                        views='120'
+                                        categories={['Спектакль', 'Театр', 'Выступление']}
+                                    />
+                                </>
+                            }
+
                         </Stack>
                     </Stack>
                 </Stack>
