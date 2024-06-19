@@ -38,10 +38,9 @@ export const Header = () => {
                                     color: '#fff',
                                     textDecoration: 'none',
                                 }}>Вход</NavLink>
-                                <IconButton size='large' onClick={() =>navigate(LOGIN_PAGE_PATH)}>
+                                <IconButton size='large' onClick={() => navigate(LOGIN_PAGE_PATH)}>
                                     <AccountCircleOutlinedIcon fontSize='large' />
                                 </IconButton>
-
                             </Stack>
                         )
                     }
@@ -63,7 +62,7 @@ export const Header = () => {
                     {
                         session.role === ADMIN_ROLE && (
                             <Stack direction='row' alignItems='center' gap={5}>
-                                <NavLink to={'/search-events'} style={{color: '#000'}}>Мои мероприятия</NavLink>
+                                <NavLink to={'/search-events'} style={{color: '#000'}}>Мероприятия</NavLink>
                                 <Stack direction='row' alignItems='center' onClick={onClickProfile}>
                                     <Typography>Админ</Typography>
                                     <IconButton size='large' >
