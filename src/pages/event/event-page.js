@@ -1,7 +1,7 @@
 import {Box, Container, Stack, TextField, Typography} from "@mui/material";
 import {Header} from "../../components/screen/header";
 import {EventCategory} from "../../components/screen/event";
-import {categories} from "../create-event/create-event";
+
 import Map from '../../assets/map.png'
 import EventImg from '../../assets/event-img.png'
 import {UIButton} from "../../components/ui/button";
@@ -28,6 +28,21 @@ export const RejectionReason = () => {
         </Stack>
     )
 }
+
+const categories = [
+    {
+        id: 1,
+        name: 'Музыка',
+    },
+    {
+        id: 2,
+        name: 'Культура',
+    },
+    {
+        id: 3,
+        name: 'Ноты',
+    },
+]
 
 export const EventPage = () => {
     const navigate = useNavigate();
