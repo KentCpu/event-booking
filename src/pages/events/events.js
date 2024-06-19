@@ -13,6 +13,8 @@ import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutl
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import {EventCard} from "../search-events/event-card";
 import CardWallpaper1 from "../../assets/kak-igra-v-shahmaty.png";
+import CardWallpaper2 from "../../assets/event-card-2.png";
+import CardWallpaper3 from "../../assets/event-card-3.png";
 
 function a11yProps(index) {
     return {
@@ -81,7 +83,7 @@ export const Events = () => {
                                 cover={CardWallpaper1}
                                 title={'Игровой вечер'}
                                 subtitle={'Покажите все свои навыки и сразитесь с сильнейшими. '}
-                                place='ул. Кирова 51а'
+                                place='Проспект Ленина 164'
                                 time='06.06.24 19:10-21:30'
                                 price='150р'
                                 views='95'
@@ -89,24 +91,24 @@ export const Events = () => {
                                 onClick={openEvent}
                             />
                             <EventCard
-                                cover={CardWallpaper1}
-                                title={'Игровой вечер'}
-                                subtitle={'Покажите все свои навыки и сразитесь с сильнейшими. '}
+                                cover={CardWallpaper2}
+                                title={'Экспозиция'}
+                                subtitle={'Проведите прекрасный вечер в прекрасной атмосфере.'}
                                 place='ул. Кирова 51а'
-                                time='06.06.24 19:10-21:30'
-                                price='150р'
-                                views='95'
-                                categories={['Шахматы', 'Спорт', 'Игра']}
+                                time='30.06.24 20:15-21:30'
+                                price='400р'
+                                views='230'
+                                categories={['Выставка', 'Картины']}
                             />
                             <EventCard
-                                cover={CardWallpaper1}
-                                title={'Игровой вечер'}
-                                subtitle={'Покажите все свои навыки и сразитесь с сильнейшими. '}
-                                place='ул. Кирова 51а'
-                                time='06.06.24 19:10-21:30'
-                                price='150р'
-                                views='95'
-                                categories={['Шахматы', 'Спорт', 'Игра']}
+                                cover={CardWallpaper3}
+                                title={'Бесприданница'}
+                                subtitle={'Вас ждет захватывающий вечер, полный загадок, тайн и неожиданных поворотов!'}
+                                place='ул. Весенняя 11'
+                                time='15.06.24 20:15-21:30'
+                                price='300р'
+                                views='120'
+                                categories={['Спектакль', 'Театр', 'Выступление']}
                             />
                         </Stack>
                     </Stack>

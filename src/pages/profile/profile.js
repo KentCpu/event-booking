@@ -52,30 +52,32 @@ export const ProfilePage = () => {
                         </Stack>
                         <Stack gap={3} flex='0 1 900px'>
                             <Typography fontSize='20px'>Личные данные</Typography>
-                            <Stack direction='row' gap={1} alignItems='center'>
+                            <Stack direction='row' justifyContent='space-between' alignItems='center'>
                                 <Typography>Имя</Typography>
                                 <TextField
                                     size='small'
                                     name="email"
                                     placeholder="Имя"
-                                    fullWidth
+                                    sx={{width: 773}}
                                 />
                             </Stack>
-                            <Stack direction='row' gap={1} alignItems='center'>
+                            <Stack direction='row' gap={1} alignItems='center'  justifyContent='space-between'>
                                 <Typography>Фамилия</Typography>
                                 <TextField
                                     size='small'
                                     placeholder="Фамилия"
                                     fullWidth
+                                    sx={{width: 773}}
                                 />
                             </Stack>
-                            <Stack direction='row' gap={1} alignItems='center'>
+                            <Stack direction='row' gap={1} alignItems='center' justifyContent='space-between'>
                                 <Typography>Отчество</Typography>
                                 <TextField
                                     size='small'
                                     name="email"
                                     placeholder="Отчество"
                                     fullWidth
+                                    sx={{width: 773}}
                                 />
                             </Stack>
                             <Stack direction='row' alignItems='center' gap={1}>
