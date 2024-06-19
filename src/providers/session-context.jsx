@@ -10,7 +10,7 @@ export const SessionContext = createContext({
 });
 
 export const SessionProvider = ({children}) => {
-    const [session, setSession] = useState( { id: null, role: USER_ROLE });
+    const [session, setSession] = useState( { id: null, role: GUEST_ROLE });
 
     return (
         <SessionContext.Provider value={{session, setSession}}>

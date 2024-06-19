@@ -30,62 +30,81 @@ export const RegistrationForm = () => {
     return (
         <Stack gap={2}>
             <Typography variant="h1" fontSize='32px' align='center'>Регистрация</Typography>
-            <TextField
-                name="name"
-                placeholder="Введите имя"
-                size='small'
-                required
-                value={registrationData.name}
-                onChange={onChangeField}
-                fullWidth
-            />
-            <TextField
-                name="surname"
-                placeholder="Введите фамилию"
-                size='small'
-                required
-                value={registrationData.surname}
-                onChange={onChangeField}
-                fullWidth
-            />
-            <TextField
-                name="patronymic"
-                placeholder="Введите отчество"
-                size='small'
-                required
-                value={registrationData.patronymic}
-                onChange={onChangeField}
-                fullWidth
-            />
-            <TextField
-                name="email"
-                placeholder="Укажите электронную почту"
-                size='small'
-                required
-                value={registrationData.email}
-                onChange={onChangeField}
-                fullWidth
-            />
-            <TextField
-                type="password"
-                placeholder="Введите пароль"
-                size='small'
-                name="password"
-                required
-                value={registrationData.password}
-                onChange={onChangeField}
-                fullWidth
-            />
-            <TextField
-                type="confirmPassword"
-                placeholder="Повторите пароль"
-                size='small'
-                name="password"
-                required
-                value={registrationData.confirmPassword}
-                onChange={onChangeField}
-                fullWidth
-            />
+            <Stack>
+                <Typography>Имя</Typography>
+                <TextField
+                    name="name"
+                    placeholder="Введите имя"
+                    size='small'
+                    required
+                    value={registrationData.name}
+                    onChange={onChangeField}
+                    fullWidth
+                />
+            </Stack>
+            <Stack>
+                <Typography>Фамилия</Typography>
+                <TextField
+                    name="surname"
+                    placeholder="Введите фамилию"
+                    size='small'
+                    required
+                    value={registrationData.surname}
+                    onChange={onChangeField}
+                    fullWidth
+                />
+            </Stack>
+            <Stack>
+                <Typography>Отчество</Typography>
+                <TextField
+                    name="patronymic"
+                    placeholder="Введите отчество"
+                    size='small'
+                    required
+                    value={registrationData.patronymic}
+                    onChange={onChangeField}
+                    fullWidth
+                />
+            </Stack>
+            <Stack>
+                <Typography>Укажите электронную почту</Typography>
+                <TextField
+                    name="email"
+                    placeholder="Укажите электронную почту"
+                    size='small'
+                    required
+                    value={registrationData.email}
+                    onChange={onChangeField}
+                    fullWidth
+                />
+            </Stack>
+
+            <Stack>
+                <Typography>Введите пароль</Typography>
+                <TextField
+                    type="password"
+                    placeholder="Введите пароль"
+                    size='small'
+                    name="password"
+                    required
+                    value={registrationData.password}
+                    onChange={onChangeField}
+                    fullWidth
+                />
+            </Stack>
+            <Stack>
+                <Typography>Повторите пароль</Typography>
+                <TextField
+                    type="confirmPassword"
+                    placeholder="Повторите пароль"
+                    size='small'
+                    name="password"
+                    required
+                    value={registrationData.confirmPassword}
+                    onChange={onChangeField}
+                    fullWidth
+                />
+            </Stack>
             <UIButton
                 variant="primary"
                 onClick={registration}
