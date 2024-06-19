@@ -2,8 +2,23 @@ import {Header} from "../../components/screen/header";
 import {Autocomplete, Checkbox, Container, FormControlLabel, Stack, TextField, Typography} from "@mui/material";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import {categories} from "../create-event/create-event";
+
 import {UIButton} from "../../components/ui/button";
+
+const categories = [
+    {
+        id: 1,
+        name: 'Танцы',
+    },
+    {
+        id: 2,
+        name: 'Cпорт',
+    },
+    {
+        id: 3,
+        name: 'Музыка',
+    },
+]
 
 export const StatisticsPage = () => {
     return (

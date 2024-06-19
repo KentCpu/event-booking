@@ -1,14 +1,17 @@
-import {Checkbox, FormControlLabel, Stack, TextField, Typography} from "@mui/material";
+import {Button, Checkbox, FormControlLabel, Stack, TextField, Typography} from "@mui/material";
 import {useState} from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 import {HOME_PAGE_PATH, REGISTRATION_PAGE_PATH} from "../../const/path-page";
 import {UIButton} from "../../components/ui/button";
+import {RegistrationForm} from "../../components/screen/registraion-form";
+import {UIModal} from "../../components/ui/modal";
 
 
 export const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const [openRegistrationModal, setOpenRegistrationModal] = useState(false);
 
     const onChangeEmail = (event) => setEmail(event.target.value);
     const onChangePassword = (event) => setPassword(event.target.value);
@@ -45,7 +48,20 @@ export const LoginPage = () => {
                 >
                     Войти
                 </UIButton>
-                <Typography>Еще нет аккаунта? <NavLink to={REGISTRATION_PAGE_PATH}>Зарегистрироваться!</NavLink></Typography>
+                <UIModal
+                    open={openRegistrationModal}
+                    onClose={() => setOpenRegistrationModal(false)}
+                >
+                    <RegistrationForm/>
+                </UIModal>
+                <Typography>Еще нет аккаунта? <Button sx={{
+                    padding: 0,
+                    color: '#1874CF',
+                    textTransform: 'none',
+                    '&:hover': {
+                        backgroundColor: 'none',
+                    }
+                }} onClick={() => setOpenRegistrationModal(true)}>Зарегистрироваться!</Button></Typography>
             </Stack>
         </Stack>
     );

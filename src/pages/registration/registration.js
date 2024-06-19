@@ -34,9 +34,9 @@ export const RegistrationPage = () => {
     }
 
     return (
-        <Stack direction='row' justifyContent='center' alignItems='center' height='100vh'>
-            <Stack width='400px' component='form' gap={1.5}>
-                <Typography variant="h1" fontSize='32px' align='center'>Регистрация организатора</Typography>
+        <Stack direction='row' justifyContent='center' alignItems='center'  height='100vh'>
+            <Stack width='400px' component='form' gap={2}>
+                <Typography variant="h1" fontSize='30px' align='center'>Регистрация организатора</Typography>
                 <Stack>
                     <Typography>Введите имя</Typography>
                     <TextField

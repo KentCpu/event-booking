@@ -1,20 +1,20 @@
 import {
-    Box,
-    FormControlLabel,
+    Autocomplete,
+    Button,
+    Checkbox,
+    Container,
     FormControl,
+    FormControlLabel,
     FormLabel,
     Radio,
     RadioGroup,
     Stack,
     TextField,
-    Typography,
-    Container,
-    Button, Autocomplete, Checkbox
+    Typography
 } from "@mui/material";
 import {Header} from "../../components/screen/header";
 import {DatePicker} from "@mui/x-date-pickers";
 import NoProfileImg from '../../assets/no-profile-img.png';
-import {TextareaAutosize} from "@mui/base/TextareaAutosize";
 import {UIButton} from "../../components/ui/button";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
@@ -28,11 +28,11 @@ const categories = [
     },
     {
         id: 2,
-        name: 'Уроки',
+        name: 'Рисование',
     },
     {
         id: 3,
-        name: 'Танцы',
+        name: 'История',
     },
 ]
 
@@ -78,11 +78,11 @@ export const ProfilePage = () => {
                                     fullWidth
                                 />
                             </Stack>
-                            <Stack direction='row' gap={2} alignItems='center'>
+                            <Stack direction='row' alignItems='center' gap={1}>
                                 <Typography>Дата рождения</Typography>
                                 <DatePicker
                                     placeholder="Дата рождения"
-                                    slotProps={{ textField: { size: 'small', fullWidth: true } }}
+                                    slotProps={{ textField: { size: 'small', sx: {flexGrow: 1}, } }}
                                 />
                                 {
                                     session.role === ORGANIZER_ROLE &&  <TextField

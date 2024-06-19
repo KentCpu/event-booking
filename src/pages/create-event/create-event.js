@@ -9,7 +9,7 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 export const categories = [
     {
         id: 1,
-        name: 'Музыка',
+        name: 'Танцы',
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ export const categories = [
     },
     {
         id: 3,
-        name: 'Танцы',
+        name: 'Искусство',
     },
 ]
 

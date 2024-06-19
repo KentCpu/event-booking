@@ -18,13 +18,8 @@ import {RegistrationForm} from "./registraion-form";
 export const Header = () => {
     const navigate = useNavigate();
     const {session} = useSession();
-    const [openRegistrationModal, setOpenRegistrationModal] = useState(false);
 
     const onClickProfile = () => {
-        if(session.role === GUEST_ROLE) {
-            setOpenRegistrationModal(true);
-            return;
-        }
         navigate(PROFILE_PAGE_PATH);
     }
 
@@ -43,15 +38,10 @@ export const Header = () => {
                                     color: '#fff',
                                     textDecoration: 'none',
                                 }}>Вход</NavLink>
-                                <IconButton size='large' onClick={onClickProfile}>
+                                <IconButton size='large' onClick={() =>navigate(LOGIN_PAGE_PATH)}>
                                     <AccountCircleOutlinedIcon fontSize='large' />
                                 </IconButton>
-                                <UIModal
-                                    open={openRegistrationModal}
-                                    onClose={() => setOpenRegistrationModal(false)}
-                                >
-                                    <RegistrationForm/>
-                                </UIModal>
+
                             </Stack>
                         )
                     }
@@ -59,10 +49,11 @@ export const Header = () => {
                         session.role === ORGANIZER_ROLE && (
                             <Stack direction='row' alignItems='center' gap={5}>
                                 <NavLink to={'/search-events'} style={{color: '#000'}}>Мои мероприятия</NavLink>
+
                                 <NavLink to={ISSUE_PAGE_PATH} style={{color: '#000'}}>Вопросы</NavLink>
-                                <Stack direction='row' alignItems='center'>
+                                <Stack direction='row' alignItems='center' onClick={onClickProfile}>
                                     <Typography>Сибиряков Матвей</Typography>
-                                    <IconButton size='large' onClick={onClickProfile}>
+                                    <IconButton size='large'>
                                         <AccountCircleOutlinedIcon fontSize='large' />
                                     </IconButton>
                                 </Stack>
@@ -73,9 +64,9 @@ export const Header = () => {
                         session.role === ADMIN_ROLE && (
                             <Stack direction='row' alignItems='center' gap={5}>
                                 <NavLink to={'/search-events'} style={{color: '#000'}}>Мои мероприятия</NavLink>
-                                <Stack direction='row' alignItems='center'>
+                                <Stack direction='row' alignItems='center' onClick={onClickProfile}>
                                     <Typography>Админ</Typography>
-                                    <IconButton size='large' onClick={onClickProfile}>
+                                    <IconButton size='large' >
                                         <AccountCircleOutlinedIcon fontSize='large' />
                                     </IconButton>
                                 </Stack>
@@ -87,9 +78,9 @@ export const Header = () => {
                         session.role === USER_ROLE && (
                             <Stack direction='row' alignItems='center' gap={5}>
                                 <NavLink to={'/search-events'} style={{color: '#000'}}>Мои мероприятия</NavLink>
-                                <Stack direction='row' alignItems='center'>
+                                <Stack direction='row' alignItems='center' onClick={onClickProfile}>
                                     <Typography>Егор Копытов</Typography>
-                                    <IconButton size='large' onClick={onClickProfile}>
+                                    <IconButton size='large'>
                                         <AccountCircleOutlinedIcon fontSize='large' />
                                     </IconButton>
                                 </Stack>
